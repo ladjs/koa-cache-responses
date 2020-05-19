@@ -1,0 +1,134 @@
+{
+  "name": "@ladjs/koa-cache-responses",
+  "description": "Caching middleware for Koa using koa-cash and route pattern-based matching.  Made for Lad.",
+  "version": "0.0.0",
+  "author": "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)",
+  "bugs": {
+    "url": "https://github.com/ladjs/koa-cache-responses/issues",
+    "email": "niftylettuce@gmail.com"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "contributors": [
+    "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "@commitlint/cli": "latest",
+    "@commitlint/config-conventional": "latest",
+    "ava": "latest",
+    "codecov": "latest",
+    "cross-env": "latest",
+    "eslint": "6.x",
+    "eslint-config-xo-lass": "latest",
+    "fixpack": "latest",
+    "husky": "latest",
+    "lint-staged": "latest",
+    "nyc": "latest",
+    "remark-cli": "latest",
+    "remark-preset-github": "latest",
+    "xo": "0.25"
+  },
+  "engines": {
+    "node": ">=8.3"
+  },
+  "homepage": "https://github.com/ladjs/koa-cache-responses",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && npm test",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "keywords": [
+    "alternative",
+    "asset",
+    "assets",
+    "cache",
+    "caching",
+    "cash",
+    "cdn",
+    "cloudfront",
+    "content",
+    "css",
+    "delivery",
+    "file",
+    "hash",
+    "http",
+    "image",
+    "images",
+    "img",
+    "in-memory",
+    "ioredis",
+    "javascript",
+    "js",
+    "koa",
+    "lad",
+    "lass",
+    "memory",
+    "middleware",
+    "modified",
+    "mongo",
+    "mongoose",
+    "network",
+    "redis",
+    "responses",
+    "rev",
+    "revision",
+    "s3",
+    "script",
+    "scripts",
+    "serve",
+    "server",
+    "static",
+    "storage",
+    "store"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "nyc": {
+    "check-coverage": true,
+    "lines": 100,
+    "functions": 100,
+    "branches": 100,
+    "reporter": [
+      "lcov",
+      "html",
+      "text"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true,
+    "bracketSpacing": true,
+    "trailingComma": "none"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "preset-github"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ladjs/koa-cache-responses"
+  },
+  "scripts": {
+    "ava": "cross-env NODE_ENV=test ava",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "lint": "xo && remark . -qfo",
+    "nyc": "cross-env NODE_ENV=test nyc ava",
+    "test": "yarn run lint && yarn run ava",
+    "test-coverage": "yarn run lint && yarn run nyc"
+  },
+  "xo": {
+    "prettier": true,
+    "space": true,
+    "extends": [
+      "xo-lass"
+    ]
+  }
+}
