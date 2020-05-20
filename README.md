@@ -8,7 +8,7 @@
 [![license](https://img.shields.io/github/license/ladjs/koa-cache-responses.svg)](LICENSE)
 [![npm downloads](https://img.shields.io/npm/dt/@ladjs/koa-cache-responses.svg)](https://npm.im/@ladjs/koa-cache-responses)
 
-> Caching middleware for Koa using koa-cash and route pattern-based matching.  Made for Lad.
+> Caching middleware for Koa using `koa-cash` and route pattern-based matching with `path-to-regexp`.  Made for [Lad](https://lad.js.org).
 
 
 ## Table of Contents
@@ -36,14 +36,7 @@ yarn add @ladjs/koa-cache-responses
 
 ## Usage
 
-```js
-const @ladjs/koaCacheResponses = require('@ladjs/koa-cache-responses');
-
-const @ladjs/koaCacheResponses = new @ladjs/koaCacheResponses();
-
-console.log(@ladjs/koaCacheResponses.renderName());
-// script
-```
+See [@ladjs/web](https://github.com/ladjs/web) integration.
 
 
 ## Contributors

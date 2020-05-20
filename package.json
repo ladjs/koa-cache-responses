@@ -1,8 +1,11 @@
 {
   "name": "@ladjs/koa-cache-responses",
-  "description": "Caching middleware for Koa using koa-cash and route pattern-based matching.  Made for Lad.",
+  "description": "Caching middleware for Koa using koa-cash and route pattern-based matching with path-to-regexp. Made for Lad.",
   "version": "0.0.0",
   "author": "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)",
+  "ava": {
+    "verbose": true
+  },
   "bugs": {
     "url": "https://github.com/ladjs/koa-cache-responses/issues",
     "email": "niftylettuce@gmail.com"
@@ -15,21 +18,30 @@
   "contributors": [
     "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^4.17.15",
+    "path-to-regexp": "^6.1.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
+    "@ladjs/redis": "^1.0.3",
     "ava": "latest",
     "codecov": "latest",
     "cross-env": "latest",
     "eslint": "6.x",
     "eslint-config-xo-lass": "latest",
+    "fast-safe-stringify": "^2.0.7",
     "fixpack": "latest",
     "husky": "latest",
+    "koa": "^2.12.0",
+    "koa-cash": "^3.0.3",
     "lint-staged": "latest",
+    "node-cache": "^5.1.0",
     "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
+    "supertest": "^4.0.2",
     "xo": "0.25"
   },
   "engines": {
@@ -88,17 +100,6 @@
   ],
   "license": "MIT",
   "main": "index.js",
-  "nyc": {
-    "check-coverage": true,
-    "lines": 100,
-    "functions": 100,
-    "branches": 100,
-    "reporter": [
-      "lcov",
-      "html",
-      "text"
-    ]
-  },
   "prettier": {
     "singleQuote": true,
     "bracketSpacing": true,
