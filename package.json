@@ -20,12 +20,13 @@
   ],
   "dependencies": {
     "lodash": "^4.17.15",
+    "ms": "^2.1.2",
     "path-to-regexp": "^6.1.0"
   },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
-    "@ladjs/redis": "^1.0.3",
+    "@ladjs/redis": "^1.0.4",
     "ava": "latest",
     "codecov": "latest",
     "cross-env": "latest",
@@ -34,10 +35,10 @@
     "fast-safe-stringify": "^2.0.7",
     "fixpack": "latest",
     "husky": "latest",
-    "koa": "^2.12.0",
-    "koa-cash": "^3.0.3",
+    "koa": "^2.12.1",
+    "koa-cash": "^4.0.3",
     "lint-staged": "latest",
-    "node-cache": "^5.1.0",
+    "node-cache": "^5.1.1",
     "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",

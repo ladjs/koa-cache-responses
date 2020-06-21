@@ -1,11 +1,15 @@
-const { pathToRegexp } = require('path-to-regexp');
 const _ = require('lodash');
+const ms = require('ms');
+const { pathToRegexp } = require('path-to-regexp');
 
 class CacheResponses {
   constructor(config = {}) {
     this.config = {
       pathToRegexp: { sensitive: true, strict: true },
       routes: [],
+      // <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control>
+      // <https://web.dev/uses-long-cache-ttl/?utm_source=lighthouse&utm_medium=unknown>
+      cacheControl: ['public', `max-age=${ms('1y') / 1000}`],
       ...config
     };
 
@@ -34,6 +38,15 @@ class CacheResponses {
     }
 
     if (!match) return next();
+
+    // inspired by @redpill-paris/koa-cache-control
+    // <https://github.com/RedPillGroup/koa-cache-control>
+    if (
+      Array.isArray(this.config.cacheControl) &&
+      this.config.cacheControl.length > 0
+    )
+      ctx.set('Cache-Control', this.config.cacheControl.join(', '));
+
     const cashed = await ctx.cashed();
     if (cashed) return;
     return next();
