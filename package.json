@@ -1,7 +1,7 @@
 {
   "name": "@ladjs/koa-cache-responses",
   "description": "Caching middleware for Koa using koa-cash and route pattern-based matching with path-to-regexp. Made for Lad.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Nick Baugh <niftylettuce@gmail.com> (http://niftylettuce.com/)",
   "ava": {
     "verbose": true
