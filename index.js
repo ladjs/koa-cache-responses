@@ -18,6 +18,8 @@ class CacheResponses {
   }
 
   async middleware(ctx, next) {
+    if (ctx.method !== 'GET') return next();
+
     if (!_.isFunction(ctx.cashed))
       throw new Error(
         'Please ensure you have set up `koa-cash` properly, see https://github.com/koajs/cash for more info.'
