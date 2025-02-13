@@ -10,6 +10,7 @@ class CacheResponses {
       // <https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cache-Control>
       // <https://web.dev/uses-long-cache-ttl/?utm_source=lighthouse&utm_medium=unknown>
       cacheControl: ['public', `max-age=${ms('1y') / 1000}`],
+      methods: ['HEAD', 'GET'],
       ...config
     };
 
@@ -18,7 +19,7 @@ class CacheResponses {
   }
 
   async middleware(ctx, next) {
-    if (ctx.method !== 'GET') return next();
+    if (!this.config.methods.includes(ctx.method)) return next();
 
     if (!_.isFunction(ctx.cashed))
       throw new Error(

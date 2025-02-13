@@ -6,10 +6,9 @@ const koaCash = require('koa-cash');
 const supertest = require('supertest');
 const test = require('ava');
 const safeStringify = require('fast-safe-stringify');
-
 const CacheResponses = require('..');
 
-test('should expose methods and default options', t => {
+test('should expose methods and default options', (t) => {
   const cacheResponses = new CacheResponses();
   t.deepEqual(cacheResponses.config.pathToRegexp, {
     sensitive: true,
@@ -20,7 +19,7 @@ test('should expose methods and default options', t => {
   t.true(_.isFunction(cacheResponses.paired));
 });
 
-test('memory cache', async t => {
+test('memory cache', async (t) => {
   const app = new Koa();
   const myCache = new NodeCache();
   app.use(
@@ -45,7 +44,7 @@ test('memory cache', async t => {
   let cachedTime;
   app.use((ctx, next) => {
     const time = Date.now();
-    if (!cachedTime) cachedTime = time;
+    cachedTime ||= time;
     ctx.body = time;
     return next();
   });
@@ -61,7 +60,7 @@ test('memory cache', async t => {
   t.is(JSON.parse(myCache.get('/')).body, cachedTime.toString());
 });
 
-test('redis cache', async t => {
+test('redis cache', async (t) => {
   const app = new Koa();
   const redis = new Redis({
     lazyConnect: true,
@@ -76,7 +75,7 @@ test('redis cache', async t => {
         let value;
         try {
           value = await redis.get(key);
-          if (value) value = JSON.parse(value);
+          value &&= JSON.parse(value);
         } catch (err) {
           console.error(err);
         }
@@ -98,7 +97,7 @@ test('redis cache', async t => {
   let cachedTime;
   app.use((ctx, next) => {
     const time = Date.now();
-    if (!cachedTime) cachedTime = time;
+    cachedTime ||= time;
     ctx.body = time;
     return next();
   });
