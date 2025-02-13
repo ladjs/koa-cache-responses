@@ -1,6 +1,6 @@
 const Koa = require('koa');
 const NodeCache = require('node-cache');
-const Redis = require('@ladjs/redis');
+const Redis = require('ioredis-mock');
 const _ = require('lodash');
 const koaCash = require('koa-cash');
 const supertest = require('supertest');
